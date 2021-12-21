@@ -14,8 +14,9 @@ void rotacaodireita(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int
 void escurecer(int *inicio, int *fim, int nl, int nc, int mn, int *aux);
 void clarear(int *inicio, int *fim, int nl, int nc, int mn, int *aux);
 void rotacaoesquerda(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1);
+void vinheta(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1);
 
-int *inicio, *fim, *aux, *aux1 , *aux2;
+int *inicio, *fim, *aux, *aux1, *aux2;
 
 int main(int argc, char **argv)
 {
@@ -53,61 +54,64 @@ int main(int argc, char **argv)
     else
         cout << "Erro ao abrir o arquivo";
 
-    do{
-    cout << endl;
-    cout << "0.Sair do programa." << endl;
-    cout << "1.Negativo da imagem." << endl;
-    cout << "2.Inversao vertical." << endl;
-    cout << "3.Inversao horizontal." << endl;
-    cout << "4.Rotação a direita." << endl;
-    cout << "5.Escurecer borda." << endl;
-    cout << "6.Escurecer Imagem." << endl;
-    cout << "7.Clarear Imagem." << endl;
-    cout << "8.Rotação a esquerda." << endl;
-
-    cout << endl << "Digite uma opcao: ";
-    cin >> op;
-    switch (op)
+    do
     {
-    case 0:
-        cout << "Voce escolheu a opcao de encerrar o programa!";
-        exit(100);
-    case 1:
-        negativo(inicio, fim, nl, nc, mn, aux);
-        cout << "Imagem negativa" << endl;
-        break;
-    case 2:
-        invertervertical(inicio, fim, nl, nc, mn, aux);
+        cout << endl;
+        cout << "0.Sair do programa." << endl;
+        cout << "1.Negativo da imagem." << endl;
         cout << "2.Inversao vertical." << endl;
-        break;
-    case 3:
-        inverterhorizontal(inicio, fim, nl, nc, mn, aux, aux1);
         cout << "3.Inversao horizontal." << endl;
-        break;
-    case 4:
-        rotacaodireita(inicio,fim,nl,nc,mn,aux,aux1);
         cout << "4.Rotação a direita." << endl;
-        break;
-    case 5:
         cout << "5.Escurecer borda." << endl;
-        break;
-    case 6:
-        escurecer(inicio,fim,nl,nc,mn,aux);
         cout << "6.Escurecer Imagem." << endl;
-        break;
-    case 7:
-        clarear(inicio,fim,nl,nc,mn,aux);
         cout << "7.Clarear Imagem." << endl;
-        break;
-    case 8:
-        rotacaoesquerda(inicio,fim,nl,nc,mn,aux,aux1);
         cout << "8.Rotação a esquerda." << endl;
-        break;
-    }
-    }while(op != 0);
+
+        cout << endl
+             << "Digite uma opcao: ";
+        cin >> op;
+        switch (op)
+        {
+        case 0:
+            cout << "Voce escolheu a opcao de encerrar o programa!";
+            exit(100);
+        case 1:
+            negativo(inicio, fim, nl, nc, mn, aux);
+            cout << "Imagem negativa" << endl;
+            break;
+        case 2:
+            invertervertical(inicio, fim, nl, nc, mn, aux);
+            cout << "2.Inversao vertical." << endl;
+            break;
+        case 3:
+            inverterhorizontal(inicio, fim, nl, nc, mn, aux, aux1);
+            cout << "3.Inversao horizontal." << endl;
+            break;
+        case 4:
+            rotacaodireita(inicio, fim, nl, nc, mn, aux, aux1);
+            cout << "4.Rotação a direita." << endl;
+            break;
+        case 5:
+            vinheta(inicio,fim,nl,nc,mn,aux,aux1);
+            cout << "5.Escurecer borda." << endl;
+            break;
+        case 6:
+            escurecer(inicio, fim, nl, nc, mn, aux);
+            cout << "6.Escurecer Imagem." << endl;
+            break;
+        case 7:
+            clarear(inicio, fim, nl, nc, mn, aux);
+            cout << "7.Clarear Imagem." << endl;
+            break;
+        case 8:
+            rotacaoesquerda(inicio, fim, nl, nc, mn, aux, aux1);
+            cout << "8.Rotação a esquerda." << endl;
+            break;
+        }
+    } while (op != 0);
 }
 
-void negativo(int *inicio, int *fim, int nl, int nc, int mn, int *aux) //ok
+void negativo(int *inicio, int *fim, int nl, int nc, int mn, int *aux) // ok
 {
 
     int count = 0;
@@ -136,7 +140,7 @@ void negativo(int *inicio, int *fim, int nl, int nc, int mn, int *aux) //ok
         cout << "Erro ao abrir o arquivo";
 }
 
-void invertervertical(int *inicio, int *fim, int nl, int nc, int mn, int *aux) //ook
+void invertervertical(int *inicio, int *fim, int nl, int nc, int mn, int *aux) // ook
 {
 
     int count = 0;
@@ -155,9 +159,9 @@ void invertervertical(int *inicio, int *fim, int nl, int nc, int mn, int *aux) /
                 myfile2 << endl;
                 count = 0;
             }
-            if(*aux < 0)
+            if (*aux < 0)
                 myfile2 << 0 << " ";
-            else if(*aux > 255)
+            else if (*aux > 255)
                 myfile2 << 255 << " ";
             else
                 myfile2 << *aux << " ";
@@ -169,7 +173,7 @@ void invertervertical(int *inicio, int *fim, int nl, int nc, int mn, int *aux) /
         cout << "Erro ao abrir o arquivo";
 }
 
-void inverterhorizontal(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1) //ok
+void inverterhorizontal(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1) // ok
 {
 
     int count = 0;
@@ -205,7 +209,7 @@ void inverterhorizontal(int *inicio, int *fim, int nl, int nc, int mn, int *aux,
         cout << "Erro ao abrir o arquivo";
 }
 
-void rotacaodireita(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1) // ok 
+void rotacaodireita(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1) // ok
 {
     int count = 0;
     ofstream myfile4;
@@ -217,19 +221,18 @@ void rotacaodireita(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int
         myfile4 << "#Create By Eduardo Sapio\n";
         myfile4 << nl << " " << nc << endl;
         myfile4 << mn << endl;
-        for (aux1 = fim - nc; aux1 < fim;aux1++,aux2++)
+        for (aux1 = fim - nc; aux1 < fim; aux1++, aux2++)
         {
-            for(aux = aux1; aux >= aux2;aux -=nc)
+            for (aux = aux1; aux >= aux2; aux -= nc)
             {
                 if (count == 15)
                 {
                     myfile4 << endl;
                     count = 0;
-                }  
+                }
                 myfile4 << *aux << " ";
                 count++;
             }
-            
         }
         myfile4.close();
     }
@@ -237,12 +240,55 @@ void rotacaodireita(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int
         cout << "Erro ao abrir o arquivo";
 }
 
+void vinheta(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1)
+{
+    int count = 0,fator,x=0,k=0,y=1,p=0;
+    ofstream myfile5;
+    myfile5.open("vinheta.pgm", ios::out);
+    if (myfile5.is_open())
+    {
+        
+        myfile5 << "P2\n";
+        myfile5 << "#Create By Eduardo Sapio\n";
+        myfile5 << nc << " " << nl << endl;
+        myfile5 << mn << endl;
 
+        // for(aux = inicio; aux < fim;aux++){
+        //     myfile5 << *aux << " ";
+        // }
+
+        for (fator = 100; fator >= 0; fator -= 10)
+        {
+            for (aux = inicio + x*nc + k, aux1 = inicio + y*nc - p; aux < aux1; aux++) // -------- de cima
+                myfile5 << *aux - fator << " ";
+
+            for (aux = inicio + y*nc - p, aux1 = fim - x*nc - k; aux < aux1; aux++) // | lado direito
+                myfile5 << *aux - fator << " ";
+
+            for (aux = fim - y*nc + p, aux1 = fim - x*nc - k; aux < aux1; aux++) // ------- de baixo
+                myfile5 << *aux - fator << " ";
+
+            for (aux = inicio + x*nc + k, aux1 = fim - y*nc + p; aux < aux1; aux++) // | lado esquerdo
+                myfile5 << *aux - fator << " ";
+            count++;
+            if(count == 2)
+                k = k + 2;
+            else
+                k = k + 1;
+            x++;
+            y++;
+            p++;
+        }
+        myfile5.close();
+    }
+    else 
+        cout << "Erro ao abrir o arquivo";
+}
 
 void escurecer(int *inicio, int *fim, int nl, int nc, int mn, int *aux) // escurecemos em um fator de 80 - ok
 {
 
-    int count = 0,fator = 80;
+    int count = 0, fator = 80;
 
     ofstream myfile6;
     myfile6.open("escurecida.pgm", ios::out);
@@ -259,9 +305,9 @@ void escurecer(int *inicio, int *fim, int nl, int nc, int mn, int *aux) // escur
                 myfile6 << endl;
                 count = 0;
             }
-            if(*aux - fator < 0)
+            if (*aux - fator < 0)
                 myfile6 << 0 << " ";
-            else 
+            else
                 myfile6 << *aux - fator << " ";
             count++;
         }
@@ -271,10 +317,10 @@ void escurecer(int *inicio, int *fim, int nl, int nc, int mn, int *aux) // escur
         cout << "Erro ao abrir o arquivo";
 }
 
-void clarear(int *inicio, int *fim, int nl, int nc, int mn, int *aux) //clareamos em um fator de 80 - ok
+void clarear(int *inicio, int *fim, int nl, int nc, int mn, int *aux) // clareamos em um fator de 80 - ok
 {
 
-    int count = 0,fator = 80;
+    int count = 0, fator = 80;
 
     ofstream myfile7;
     myfile7.open("clareada.pgm", ios::out);
@@ -291,9 +337,9 @@ void clarear(int *inicio, int *fim, int nl, int nc, int mn, int *aux) //clareamo
                 myfile7 << endl;
                 count = 0;
             }
-            if(*aux + fator > 255)
+            if (*aux + fator > 255)
                 myfile7 << 255 << " ";
-            else 
+            else
                 myfile7 << *aux + fator << " ";
             count++;
         }
@@ -303,7 +349,7 @@ void clarear(int *inicio, int *fim, int nl, int nc, int mn, int *aux) //clareamo
         cout << "Erro ao abrir o arquivo";
 }
 
-void rotacaoesquerda(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1) 
+void rotacaoesquerda(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1)
 {
     int count = 0;
     ofstream myfile8;
@@ -315,22 +361,22 @@ void rotacaoesquerda(int *inicio, int *fim, int nl, int nc, int mn, int *aux, in
         myfile8 << "#Create By Eduardo Sapio\n";
         myfile8 << nl << " " << nc << endl;
         myfile8 << mn << endl;
-        for (aux1 = inicio + nc; aux1 > inicio;aux1--,aux2--)
+        for (aux1 = inicio + nc; aux1 > inicio; aux1--, aux2--)
         {
-            for(aux = aux1; aux <= aux2;aux +=nc)
+            for (aux = aux1; aux <= aux2; aux += nc)
             {
                 if (count == 15)
                 {
                     myfile8 << endl;
                     count = 0;
-                }  
+                }
                 myfile8 << *aux << " ";
                 count++;
             }
-            
         }
         myfile8.close();
     }
     else
         cout << "Erro ao abrir o arquivo";
 }
+
