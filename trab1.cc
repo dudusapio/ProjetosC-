@@ -242,7 +242,8 @@ void rotacaodireita(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int
 
 void vinheta(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1)
 {
-    int count = 0,fator,x=0,k=0,y=1,p=0;
+    int count = 0,fator = 100,x=0,k=0,y=1,p=0;
+
     ofstream myfile5;
     myfile5.open("vinheta.pgm", ios::out);
     if (myfile5.is_open())
@@ -253,23 +254,28 @@ void vinheta(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1)
         myfile5 << nc << " " << nl << endl;
         myfile5 << mn << endl;
 
-        // for(aux = inicio; aux < fim;aux++){
-        //     myfile5 << *aux << " ";
-        // }
 
-        for (fator = 100; fator >= 0; fator -= 10)
-        {
+
+
+        for(int i = 0;i<4;i++){
+
+            // for(aux = inicio; aux < fim;aux++)
+            // {
+            //     myfile5 << *aux << " ";
+            // }
+ 
             for (aux = inicio + x*nc + k, aux1 = inicio + y*nc - p; aux < aux1; aux++) // -------- de cima
                 myfile5 << *aux - fator << " ";
 
-            for (aux = inicio + y*nc - p, aux1 = fim - x*nc - k; aux < aux1; aux++) // | lado direito
-                myfile5 << *aux - fator << " ";
+            // for (aux1 = fim - y*nc + p, aux = fim - x*nc - k; aux > aux1; aux--) // ------- de baixo -- problema em qual hora vai escrever | problema no primeiro for
+            //     myfile5 << *aux - fator << " ";
 
-            for (aux = fim - y*nc + p, aux1 = fim - x*nc - k; aux < aux1; aux++) // ------- de baixo
-                myfile5 << *aux - fator << " ";
+            // for (aux = inicio + y*nc - p, aux1 = fim - x*nc - k; aux < aux1; aux+=nl) // | lado direito
+            //     myfile5 << *aux - fator << " ";
 
-            for (aux = inicio + x*nc + k, aux1 = fim - y*nc + p; aux < aux1; aux++) // | lado esquerdo
-                myfile5 << *aux - fator << " ";
+            // for (aux = inicio + x*nc + k, aux1 = fim - y*nc + p; aux < aux1; aux+=nl) // | lado esquerdo
+            //     myfile5 << *aux - fator << " ";
+
             count++;
             if(count == 2)
                 k = k + 2;
@@ -278,7 +284,9 @@ void vinheta(int *inicio, int *fim, int nl, int nc, int mn, int *aux, int *aux1)
             x++;
             y++;
             p++;
+            fator = fator - 25;
         }
+
         myfile5.close();
     }
     else 
